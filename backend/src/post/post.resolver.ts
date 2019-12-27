@@ -4,6 +4,7 @@ import { Post } from './models/post';
 import { PostsArgs } from './dto/posts.args';
 import { PostService } from './post.service';
 import { CommentService } from 'src/comment/comment.service';
+import { iPost } from './schemas/post.schema';
 
 @Resolver((of) => Post)
 export class PostResolver {
@@ -13,7 +14,7 @@ export class PostResolver {
   ) { }
 
   @Query(returns => Post)
-  async post(@Args('id') id: string): Promise<Post> {
+  async post(@Args('id') id: string): Promise<iPost> {
     const post = await this.postService.findOneById(id);
     if (!post) {
       throw new NotFoundException(id);
@@ -22,12 +23,12 @@ export class PostResolver {
   }
 
   @Query(returns => [Post])
-  posts(@Args() postsArgs: PostsArgs): Promise<Post[]> {
+  posts(@Args() postsArgs: PostsArgs): Promise<iPost[]> {
     return this.postService.findAll(postsArgs);
   }
 
   @ResolveProperty()
-  async comments(@Parent() post) {
+  async comments(@Parent() post: Post) {
     const { id } = post;
     return await this.commentService.findPostComments({ postId: id });
   }

@@ -20,7 +20,7 @@ type Mutation {
 type Post {
   id: ID!
   description: String
-  user: String! @deprecated(reason: "use sender instead")
+  user: String!
   sender: String!
   image: String!
   creationDate: Date!

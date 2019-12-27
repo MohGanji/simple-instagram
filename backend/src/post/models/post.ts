@@ -9,7 +9,7 @@ export class Post {
   @Field({ nullable: true })
   description?: string;
 
-  @Field({ deprecationReason: "use sender instead" })
+  @Field()
   user: string;
 
   @Field()
