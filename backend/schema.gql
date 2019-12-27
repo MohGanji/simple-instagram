@@ -24,6 +24,7 @@ type Post {
   sender: String!
   image: String!
   creationDate: Date!
+  commentsCount: Float!
   comments: [Comment!]!
 }
 

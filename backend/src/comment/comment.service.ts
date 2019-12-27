@@ -67,7 +67,7 @@ export class CommentService {
     return this.CommentModel.find({ postId: commentsArgs.postId }).skip(commentsArgs.skip).limit(commentsArgs.take)
   }
 
-  async remove(id: string): Promise<boolean> {
-    return true;
+  async countPostComments(postId: string): Promise<number> {
+    return this.CommentModel.countDocuments({ postId: postId })
   }
 }

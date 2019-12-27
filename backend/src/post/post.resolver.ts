@@ -28,9 +28,14 @@ export class PostResolver {
   }
 
   @ResolveProperty()
+  async commentsCount(@Parent() post: Post) {
+    return this.commentService.countPostComments(post.id);
+  }
+
+  @ResolveProperty()
   async comments(@Parent() post: Post) {
     const { id } = post;
-    return await this.commentService.findPostComments({ postId: id });
+    return this.commentService.findPostComments({ postId: id });
   }
 
   @Mutation(returns => Boolean)

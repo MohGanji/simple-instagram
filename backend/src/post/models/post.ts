@@ -21,6 +21,9 @@ export class Post {
   @Field()
   creationDate: Date;
 
+  @Field()
+  commentsCount: number;
+
   @Field(type => [Comment])
   comments: string[];
 }
