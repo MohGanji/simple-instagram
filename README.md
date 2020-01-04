@@ -1,4 +1,4 @@
-For the project to work on your system, you may want to add these two aliasaes in your `/etc/hosts` file:
+For the project to work on your system, you may need to add this alias in your `/etc/hosts` file:
 
 ```
 127.0.0.1	mongo
